@@ -1,7 +1,5 @@
 #include <cstdlib>
-
 #include <iostream>
-
 #include <time.h>
 
 using namespace std;
@@ -78,13 +76,13 @@ LinkedList::LinkedList(int size) {
         //  Else traverse till the last node
            while (temp -> next != NULL) {
                 temp = temp -> next;
-}
+          }
 
        //  Assign the last node to tail
                  tail = temp;
                  return;
 }
-		//overload operator constructor
+		//overload operator 
 	void LinkedList::operator = (const LinkedList & l) {
  				 head = l.head;
  				 tail = l.tail;
@@ -102,9 +100,9 @@ LinkedList::LinkedList(int size) {
 		// inserting elements (At start of the list)
 	void LinkedList::insertAtBeginning(int val) {
  		 // make a new node
- 			 Node * new_node = new Node;
- 				 new_node -> data = val;
- 					 new_node -> next = NULL;
+ 			 Node * new_node = new Node();
+ 			 new_node -> data = val;
+ 			 new_node -> next = NULL;
 
   		// If list is empty, make the new node, the head
   			if (head == NULL) head = new_node;
@@ -113,83 +111,79 @@ LinkedList::LinkedList(int size) {
  		 // head
   			else {
    					 new_node -> next = head;
-    					head = new_node;
-}
-  							this -> updateTail();
+    				 head = new_node;
+               }
+  	 	this -> updateTail();
 }
 
 		// inserting elements (At the end of the list)
 	void LinkedList::insertAtEnd(int val) {
   		// make a new node
-					  Node * new_node = new Node;
-						  new_node -> data = val;
- 							 new_node -> next = NULL;
+		 Node * new_node = new Node();
+		 new_node -> data = val;
+ 		 new_node -> next = NULL;
 
  		 // If list is empty, make the new node, the head
- 			 if (head == NULL) head = new_node;
-
- 		 // else, make the new_node the head and its next, the previous
- 		 // head
+ 		if (head == NULL) head = new_node;
  			 else {
-  						  tail -> next = new_node;
-   							 tail = new_node;
+  			tail -> next = new_node;
+   			tail = new_node;
+        }
 }
-  		//      this->printTail();
-}
+
 		// loop over the list. return true if element found
 	bool LinkedList::search(int val) {
- 							 Node * temp = head;
+ 		 Node * temp = head;
  			 while (temp != NULL) {
-   			 if (temp -> data == val) return true;
-   			 
-   						 temp = temp -> next;
-}
-  				return false;
+   			 if (temp -> data == val) return true; 
+   			 temp = temp -> next;
+            }
+  		return false;
 }
 
 		//function to remave targeted elemnt in the element
 	void LinkedList::remove(int val) {
  		 // If the head is to be deleted
  			 if (head -> data == val) {
-   					 delete head;
-  						 head = head -> next;
-    						return;
-}
+   			    delete head;
+  				head = head -> next;
+    			return;
+               }
 
   		// If there is only one element in the list
  			 if (head -> next == NULL) {
   	  // If the head is to be deleted. Assign null to the head
   			  if (head -> data == val) {
    				   delete head;
-    				  head = NULL;
-   					   return;
-}
+    			   head = NULL;
+   				   return;
+                }
   		  // else print, value not found
-   						 cout << "Value not found!" << endl;
+   				 cout << "Value not found!" << endl;
    							 return;
   }
 
  		 // Else loop over the list and search for the node to delete
-  							Node * temp = head;
-				  while (temp -> next != NULL) {
+  			    Node * temp = head;
+			  while (temp -> next != NULL) {
  			   // When node is found, delete the node and modify the pointers
     			if (temp -> next -> data == val) {
-   						   Node * temp_ptr = temp -> next -> next;
-     						 delete temp -> next;
-     							 temp -> next = temp_ptr;
-     								 return;
-}
-  							  temp = temp -> next;
+   					 Node * temp_ptr = temp -> next -> next;
+     				delete temp -> next;
+     				temp -> next = temp_ptr;
+     			 return;
+                }
+  					temp = temp -> next;
 }
  		 // Else, the value was neve in the list
- 						 cout << "Value not found" << endl;
+ 		cout << "Value not found" << endl;
 }
 
 	void LinkedList::display() {
  						 Node * temp = head;
  				 while (temp != NULL) {
-   						 cout << temp -> data << " ";
-   							 temp = temp -> next;
+   					cout << temp -> data << " ";
+   					temp = temp -> next;
 }
  			 cout << endl;
 }
@@ -197,28 +191,26 @@ LinkedList::LinkedList(int size) {
 		/* Function to reverse the nodes in a linked list. */
 	void LinkedList::reverse() {
 				  if (head == NULL) return;
-
 					  Node * prev = NULL, * current = NULL, * next = NULL;
-						  current = head;
+						current = head;
   				while (current != NULL) {
-						   next = current -> next;
-  							  current -> next = prev;
-    							prev = current;
-  								  current = next;
-  }
+						next = current -> next;
+  						current -> next = prev;
+    					prev = current;
+  						current = next;
+               }
  		 // now let the head point at the last node (prev)
  				 head = prev;
 }
-			// Function to remove duplicates if there is any
+			// Function to remove consecutive duplicates if there is any
 	void LinkedList::removeDuplicate() {
-  		this -> selectionSort();
  			 // temp pointing to head
  			 Node * temp = head;
   				while (temp -> next != NULL && temp != NULL) {
-   			 // Duplicate Found
+   		          	 // Duplicate Found
    					 if (temp -> data == temp -> next -> data) {
-   	   // DUplicate Removed
-    					  temp -> next = temp -> next -> next;
+   	                   // Duplicate Removed
+    					temp -> next = temp -> next -> next;
     } else {
       // No Duplicate Present
       temp = temp -> next;
@@ -311,8 +303,5 @@ int main() {
 	    	}
    	}
    	 while (opt != 0);
-
-  
 }
-
 
