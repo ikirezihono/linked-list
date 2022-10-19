@@ -328,4 +328,9 @@ int main() {
 ```
 
 ## Time Complexity
-
+**Insert at the beginning:** O(1) <br>
+**Insert at the end:** O(1) <br>
+**Search:** O(N) <br>
+**Reverse:** O(N) <br>
+**Remove Duplicates:** O(N) <br>
+**Remove ELement:** O(N) <br>
